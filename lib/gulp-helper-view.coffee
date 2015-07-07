@@ -48,7 +48,7 @@ class GulpHelperView extends View
         # Make sure output knows which root folder the output/error was caused in
         stdout = (output) => @gulpOut(output, projectPathName)
         stderr = (code) => @gulpErr(code, projectPathName)
-        exit = (code) => @gulpErr(code, projectPathName)
+        exit = (code) => @gulpExit(code, projectPathName)
         # Run process and store in cache so we can exit later
         newProcess = new BufferedProcess({command, args, options, stdout, stderr, exit})
         newProcess.onWillThrowError (error) =>
@@ -72,5 +72,5 @@ class GulpHelperView extends View
     @setScroll()
 
   gulpExit: (code, projectPath) =>
-    @MessageArea.append "<div class='text-error'><span class='folder-name'>#{projectPath}</span> Exited with error code: #{code}</div>"
+    @MessageArea.append "<div class='text-exit'><span class='folder-name'>#{projectPath}</span> Exited with error code: #{code}</div>"
     @setScroll()
