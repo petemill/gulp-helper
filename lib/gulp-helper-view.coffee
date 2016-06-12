@@ -1,6 +1,7 @@
 {View} = require 'atom-space-pen-views'
 {BufferedProcess} = require 'atom'
 Convert = require 'ansi-to-html'
+path = path ? require 'path'
 converter = new Convert()
 module.exports =
 class GulpHelperView extends View
